@@ -22,14 +22,13 @@
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| image              | string     | null: false                    |
 | name               | string     | null: false                    |
 | info               | text       | null: false                    |
-| category           | string     | null: false                    |
-| sales_status       | string     | null: false                    |
-| shipping_fee       | string     | null: false                    |
-| prefecture         | string     | null: false                    |
-| scheduled_delivery | string     | null: false                    |
+| category           | genre_id   | null: false                    |
+| sales_status       | genre_id   | null: false                    |
+| shipping_fee       | genre_id   | null: false                    |
+| prefecture         | genre_id   | null: false                    |
+| scheduled_delivery | genre_id   | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
@@ -49,14 +48,14 @@
 
 - belongs_to :user
 - belongs_to :item
+  has_one :shopping_address
 
-## shipping_addresses テーブル
+## shopping_addresses テーブル
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| token          | string     | null: false                    |
 | postal_code    | string     | null: false                    |
-| prefecture     | string     | null: false                    |
+| prefecture     | genre_id   | null: false                    |
 | city           | string     | null: false                    |
 | address        | string     | null: false                    |
 | building_name  | string     |                                |
