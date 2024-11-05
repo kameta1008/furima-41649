@@ -29,32 +29,32 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Info can't be blank")
       end
 
-      it 'カテゴリー情報が空では出品できない' do
-        @item.category_id = nil
+      it 'カテゴリー情報が「---」では出品できない' do
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
-      it '状態情報が空では出品できない' do
-        @item.sales_status_id = nil
+      it '状態情報が「---」では出品できない' do
+        @item.sales_status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Sales status can't be blank")
       end
 
-      it '配送料負担の情報が空では出品できない' do
-        @item.shopping_fee_id = nil
+      it '配送料負担の情報が「---」では出品できない' do
+        @item.shopping_fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shopping fee can't be blank")
       end
 
-      it '発送元地域の情報が空では出品できない' do
-        @item.prefecture_id = nil
+      it '発送元地域の情報が「---」では出品できない' do
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
 
-      it '発送までの日数の情報が空では出品できない' do
-        @item.scheduled_delivery_id = nil
+      it '発送までの日数の情報が「---」では出品できない' do
+        @item.scheduled_delivery_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Scheduled delivery can't be blank")
       end
@@ -80,6 +80,12 @@ RSpec.describe Item, type: :model do
         @item.price = '１０００'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not a number')
+      end
+
+      it 'userが紐づいていないと出品できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end

@@ -5,9 +5,9 @@ const price = () => {
     const inputValue = priceInput.value;
     const addTaxDom = document.getElementById("add-tax-price");
     const tax = Math.floor(inputValue * 0.1); 
-    addTaxDom.innerHTML = tax;    
+    addTaxDom.innerHTML = Math.floor(tax);    
     const profitDom = document.getElementById("profit");
-    profitDom.innerHTML = inputValue - tax; 
+    profitDom.innerHTML = Math.floor(inputValue - tax); 
 
   });
   
