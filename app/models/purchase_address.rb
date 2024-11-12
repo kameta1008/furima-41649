@@ -10,7 +10,7 @@ class PurchaseAddress
     validates :city
     validates :address
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'は10桁または11桁で入力してください' }
-    validates :token, presence: true
+    validates :token
   end
 
   def save
