@@ -24,6 +24,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    return unless @item.purchase.present?
+
+    redirect_to root_path
   end
 
   def update
@@ -46,7 +49,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    return if user_signed_in? && current_user == @item.user
+    return unless current_user == @item.user || @item.purchase.present?
 
     redirect_to action: :index
   end
