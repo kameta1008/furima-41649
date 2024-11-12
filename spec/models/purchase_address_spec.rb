@@ -42,7 +42,7 @@ RSpec.describe PurchaseAddress, type: :model do
         expect(@purchase_address.errors.full_messages).to include('Postal code はハイフンを含む7桁で入力してください')
       end
 
-      it '都道府県が空では保存できない' do
+      it '都道府県が未選択では保存できない' do
         @purchase_address.prefecture_id = 1
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Prefecture を選択してください')
