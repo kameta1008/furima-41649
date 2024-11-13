@@ -49,9 +49,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    return unless current_user == @item.user || @item.purchase.present?
-
-    redirect_to action: :index
+    redirect_to root_path unless current_user == @item.user && @item.purchase.blank?
   end
 
   def item_params
